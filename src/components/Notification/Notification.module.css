@@ -1,0 +1,16 @@
+.textMessage {
+  padding: 20px;
+  font-size: 24px;
+  font-weight: 500;
+  color: rgb(207, 76, 5);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,
+  100% {
+    font-size: 24px;
+  }
+  50% {
+    font-size: 32px;
+  }
+}

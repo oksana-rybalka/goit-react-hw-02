@@ -1,21 +1,28 @@
 import { useEffect, useState } from "react";
-import Feedback from "./components/Feedback/Feedback";
-import Options from "./components/Feedback/Feedback";
 import "./App.css";
-import Notification from "./Notification/Notification";
+import Feedback from "./components/Feedback/Feedback";
+import Options from "./components/Options/Options";
+import Notification from "./components/Notification/Notification";
+import Description from "./components/Description/Description";
 
 function App() {
-  const [feedback, setFeedback] = useState({
-    good: 0,
-    neutral: 0,
-    bad: 0,
+  const [feedback, setFeedback] = useState(() => {
+    const savedFeedback = localStorage.getItem("feedback");
+    return savedFeedback
+      ? JSON.parse(savedFeedback)
+      : {
+          good: 0,
+          neutral: 0,
+          bad: 0,
+        };
   });
+  useEffect(() => {
+    localStorage.setItem("feedback", JSON.stringify(feedback));
+  }, [feedback]);
 
   const handleFeedback = (type) => {
     setFeedback((prevState) => ({ ...prevState, [type]: prevState[type] + 1 }));
   };
-
-  const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
 
   const resetFeedback = () => {
     setFeedback({
@@ -25,31 +32,32 @@ function App() {
     });
   };
 
+  const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
+
+  const positiveFeedback =
+    totalFeedback > 0 ? Math.round((feedback.good / totalFeedback) * 100) : 0;
+
   return (
     <div>
-      <h1>Sip Happens Café</h1>
-      <p>
-        Please leave your feedback about our service by selecting one of the
-        options below.
-      </p>
+      <Description />
       <Options
         options={Object.keys(feedback)}
         onLeaveFeedback={handleFeedback}
         onReset={resetFeedback}
         totalFeedback={totalFeedback}
       />
-      <>
-        {totalFeedback > 0 ? (
-          <Feedback
-            good={feedback.good}
-            neutlal={feedback.neutral}
-            bad={feedback.bad}
-            total={totalFeedback}
-          />
-        ) : (
-          <Notification message="No feedback yet" />
-        )}
-      </>
+
+      {totalFeedback > 0 ? (
+        <Feedback
+          good={feedback.good}
+          neutral={feedback.neutral}
+          bad={feedback.bad}
+          total={totalFeedback}
+          positiveFeedbackPercent={positiveFeedback}
+        />
+      ) : (
+        <Notification message="No feedback yet" />
+      )}
     </div>
   );
 }

@@ -1,13 +1,30 @@
 import styles from "./Feedback.module.css";
-import PropTypes from "prop-types";
 
-const Feedback = ({ good, neutral, bad, Totalfeedback }) => {
+const Feedback = ({
+  good,
+  neutral,
+  bad,
+  totalFeedback,
+  positiveFeedbackPercent,
+}) => {
   return (
-    <div>
-      <p>Good: {good}</p>
-      <p>Neutral: {neutral}</p>
-      <p>Bad: {bad}</p>
-      <p>Total:{Totalfeedback}</p>
+    <div className={styles.containerFeedback}>
+      <p className={styles.textFeedback}>
+        Good: <span className={styles.number}>{good}</span>
+      </p>
+      <p className={styles.textFeedback}>
+        Neutral: <span className={styles.number}>{neutral}</span>
+      </p>
+      <p className={styles.textFeedback}>
+        Bad: <span className={styles.number}>{bad}</span>
+      </p>
+      <p className={styles.textFeedback}>
+        Total: <span className={styles.number}>{totalFeedback}</span>
+      </p>
+      <p className={styles.textFeedback}>
+        Positiv:{" "}
+        <span className={styles.number}>{positiveFeedbackPercent}%</span>
+      </p>
     </div>
   );
 };

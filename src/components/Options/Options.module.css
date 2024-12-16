@@ -1,0 +1,25 @@
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.buttonOption {
+  outline: none;
+  width: 180px;
+  height: 60px;
+  border-style: none;
+  background-color: #939302;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+.buttonOption:hover {
+  outline: none;
+  border-style: none;
+  background-color: #6b6b00;
+  color: rgb(248, 204, 8);
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+  transform: scale(1.1);
+}

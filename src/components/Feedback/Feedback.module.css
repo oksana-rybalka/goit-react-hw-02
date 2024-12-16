@@ -1,0 +1,17 @@
+.containerFeedback {
+  display: flex;
+  flex-direction: column;
+  column-gap: 20px;
+  align-items: center;
+  padding: 30px;
+}
+
+.textFeedback {
+  font-size: 20px;
+  font-weight: 700;
+  color: darkolivegreen;
+}
+.number {
+  color: rgb(207, 76, 5);
+  font-weight: 900;
+}

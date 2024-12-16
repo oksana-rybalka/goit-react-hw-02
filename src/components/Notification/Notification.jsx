@@ -1,6 +1,6 @@
 import style from "./Notification.module.css";
 
 const Notification = ({ message }) => {
-  return <p>{message}</p>;
+  return <p className={style.textMessage}>{message}</p>;
 };
 export default Notification;
