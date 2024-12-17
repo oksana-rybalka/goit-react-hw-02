@@ -14,3 +14,19 @@
     font-size: 32px;
   }
 }
+@media (max-width: 768px) {
+  .textMessage {
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 300;
+  }
+  @keyframes pulse {
+    0%,
+    100% {
+      font-size: 14px;
+    }
+    50% {
+      font-size: 26px;
+    }
+  }
+}
