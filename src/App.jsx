@@ -52,7 +52,7 @@ function App() {
           good={feedback.good}
           neutral={feedback.neutral}
           bad={feedback.bad}
-          total={totalFeedback}
+          totalFeedback={totalFeedback}
           positiveFeedbackPercent={positiveFeedback}
         />
       ) : (
